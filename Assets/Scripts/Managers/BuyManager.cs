@@ -106,6 +106,7 @@ public class BuyManager : MonoBehaviour
             var rawres = req.downloadHandler.text;
             res1 = Newtonsoft.Json.JsonConvert.DeserializeObject<gameId>(rawres);
             PlayerPrefs.SetInt("MyNum"+myNum.ToString(),res1.GameID);
+            SceneManager.LoadScene(5);
             if (req.responseCode == 200)
             {
                 Int64 bigint = (Int64)(double.Parse(response) * (Int64)Math.Pow(10, 18));
