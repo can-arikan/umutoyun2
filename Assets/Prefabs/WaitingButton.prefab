@@ -33,10 +33,7 @@ RectTransform:
   - {fileID: 265906102391575948}
   - {fileID: 2612718254677438904}
   - {fileID: 6550357633831315335}
-<<<<<<< HEAD
   - {fileID: 812724401320068060}
-=======
->>>>>>> 08ffa6b6b1dfe570855efe224370f176c495fd57
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -340,7 +337,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
-<<<<<<< HEAD
 --- !u!1 &6157432559260458705
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,8 +469,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-=======
->>>>>>> 08ffa6b6b1dfe570855efe224370f176c495fd57
 --- !u!1 &8881510825025749422
 GameObject:
   m_ObjectHideFlags: 0
