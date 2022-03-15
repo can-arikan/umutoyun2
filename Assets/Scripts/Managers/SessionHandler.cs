@@ -237,23 +237,30 @@ public class SessionHandler : MonoBehaviour
 
     private async void StartIE2(GameObject abtn)
     {
-        Text index = abtn.GetComponentInChildren<Text>();
-        enough newEn = new enough(int.Parse(index.text),PlayerPrefs.GetString("Account"));
-        var req = Post("https://xcodebackend.herokuapp.com/ispaid", Newtonsoft.Json.JsonConvert.SerializeObject(newEn));
-        await req.SendWebRequest();
-        var rawres = req.downloadHandler.text;
-        var rres = Newtonsoft.Json.JsonConvert.DeserializeObject<pain>(rawres);
-        if (rres.res == false)
+        try
         {
-            await new WaitForSecondsRealtime(5);
-            waitingButtons.Add(abtn);
-        }
-        else
-        {
-            if (SceneManager.GetActiveScene().buildIndex != 1 && SceneManager.GetActiveScene().buildIndex != 2)
+            Text index = abtn.GetComponentInChildren<Text>();
+            enough newEn = new enough(int.Parse(index.text), PlayerPrefs.GetString("Account"));
+            var req = Post("https://xcodebackend.herokuapp.com/ispaid", Newtonsoft.Json.JsonConvert.SerializeObject(newEn));
+            await req.SendWebRequest();
+            var rawres = req.downloadHandler.text;
+            var rres = Newtonsoft.Json.JsonConvert.DeserializeObject<pain>(rawres);
+            if (rres.res == false)
             {
-                SceneManager.LoadScene(5);
+                await new WaitForSecondsRealtime(5);
+                waitingButtons.Add(abtn);
             }
+            else
+            {
+                if (SceneManager.GetActiveScene().buildIndex != 1 && SceneManager.GetActiveScene().buildIndex != 2)
+                {
+                    SceneManager.LoadScene(5);
+                }
+            }
+        }
+        catch
+        {
+            SceneManager.LoadScene(5);
         }
     }
 

@@ -648,7 +648,7 @@ MonoBehaviour:
   m_text: Signout
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 03dc482dc909a6c47bbcafaacfd1f2cf, type: 2}
-  m_sharedMaterial: {fileID: -3822781772315538697, guid: 03dc482dc909a6c47bbcafaacfd1f2cf, type: 2}
+  m_sharedMaterial: {fileID: -5967611412030858514, guid: 03dc482dc909a6c47bbcafaacfd1f2cf, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -828,7 +828,7 @@ MonoBehaviour:
   m_Padding:
     m_Left: 6
     m_Right: 6
-    m_Top: 4
+    m_Top: 14
     m_Bottom: 0
   m_ChildAlignment: 1
   m_Spacing: 12.82
@@ -907,7 +907,7 @@ MonoBehaviour:
   m_text: 'Highest Score: '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 03dc482dc909a6c47bbcafaacfd1f2cf, type: 2}
-  m_sharedMaterial: {fileID: -3822781772315538697, guid: 03dc482dc909a6c47bbcafaacfd1f2cf, type: 2}
+  m_sharedMaterial: {fileID: -5967611412030858514, guid: 03dc482dc909a6c47bbcafaacfd1f2cf, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1983,7 +1983,7 @@ MonoBehaviour:
   m_text: Buy New Entry
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 03dc482dc909a6c47bbcafaacfd1f2cf, type: 2}
-  m_sharedMaterial: {fileID: -3822781772315538697, guid: 03dc482dc909a6c47bbcafaacfd1f2cf, type: 2}
+  m_sharedMaterial: {fileID: -5967611412030858514, guid: 03dc482dc909a6c47bbcafaacfd1f2cf, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3007,7 +3007,7 @@ MonoBehaviour:
   m_text: Leaderboard
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 03dc482dc909a6c47bbcafaacfd1f2cf, type: 2}
-  m_sharedMaterial: {fileID: -3822781772315538697, guid: 03dc482dc909a6c47bbcafaacfd1f2cf, type: 2}
+  m_sharedMaterial: {fileID: -5967611412030858514, guid: 03dc482dc909a6c47bbcafaacfd1f2cf, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

@@ -745,15 +745,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21.7
-  m_fontSizeBase: 21.7
+  m_fontSize: 20.4
+  m_fontSizeBase: 20.4
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 3
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -829,7 +829,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 44.473083}
+  m_AnchoredPosition: {x: 0, y: 44.473022}
   m_SizeDelta: {x: 23.7191, y: 112.6666}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &546431274
@@ -906,8 +906,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.9771, y: -95}
-  m_SizeDelta: {x: 394.701, y: 45.3863}
+  m_AnchoredPosition: {x: -2.0002, y: -95}
+  m_SizeDelta: {x: 445.15, y: 45.3863}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &595640528
 MonoBehaviour:
@@ -1129,15 +1129,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14
-  m_fontSizeBase: 14
+  m_fontSize: 15.8
+  m_fontSizeBase: 15.8
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1454,7 +1454,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1, y: -264}
+  m_AnchoredPosition: {x: 1, y: -290}
   m_SizeDelta: {x: -63.2293, y: -770.384}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &952715561
@@ -1714,6 +1714,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0fcf24dba06adf45ab4dde9ef1e236d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  error: {fileID: 394406018}
+  inpu: {fileID: 595640526}
 --- !u!4 &1935988785
 Transform:
   m_ObjectHideFlags: 0
