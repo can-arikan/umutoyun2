@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
 using System.Text;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 #if UNITY_WEBGL
 public class BuyManager : MonoBehaviour
@@ -69,12 +70,13 @@ public class BuyManager : MonoBehaviour
             button.enabled = false;
         }
     }
+    
+    private bool enter = false;
 
     public async void BuyEntry()
     {
         Web3GL.buying();
         button.enabled = false;
-        bool enter = false;
         // smart contract method to call
         string method = "payment";
         // abi in json format
@@ -98,57 +100,7 @@ public class BuyManager : MonoBehaviour
         UnityWebRequest req = new UnityWebRequest();
         try
         {
-            Wallet newWallet = new Wallet();
-            newWallet.wallet = PlayerPrefs.GetString("Account");
-            var reqjs = Newtonsoft.Json.JsonConvert.SerializeObject(newWallet);
-            req = Post("https://xcodebackend.herokuapp.com/prepayment", reqjs);
-            await req.SendWebRequest();
-            var rawres = req.downloadHandler.text;
-            res1 = Newtonsoft.Json.JsonConvert.DeserializeObject<gameId>(rawres);
-            PlayerPrefs.SetInt("MyNum"+myNum.ToString(),res1.GameID);
-            SceneManager.LoadScene(5);
-            if (req.responseCode == 200)
-            {
-                Int64 bigint = (Int64)(double.Parse(response) * (Int64)Math.Pow(10, 18));
-                string value = bigint.ToString();
-                string gasLimit = "";
-                int[] obj = { res1.GameID };
-                args = Newtonsoft.Json.JsonConvert.SerializeObject(obj);
-                string gasPrice = await EVM.GasPrice("polygon", "mainnet", "https://polygon-rpc.com/");
-                try
-                {
-                    Debug.Log("My Num: " + myNum + " my del ses is " + PlayerPrefs.GetInt("MyNum"+myNum).ToString());
-                    var txcontract = await Web3GL.SendContract(method, abi, contract, args, value, gasLimit, gasPrice);
-                    var res2 = await EVM.TxStatus("polygon", "mainnet", txcontract);
-                    if (res2.responseCode != 200){
-                        Debug.Log("My Num: " + myNum + " my del ses is " + PlayerPrefs.GetInt("MyNum"+myNum).ToString() + " i am deleting now 1");
-                        WalletGameID x = new WalletGameID();
-                        x.gameId = PlayerPrefs.GetInt("MyNum"+myNum);
-                        x.wallet = PlayerPrefs.GetString("Account");
-                        var y = Newtonsoft.Json.JsonConvert.SerializeObject(x);
-                        req = Post("https://xcodebackend.herokuapp.com/delses", y);
-                        await req.SendWebRequest();
-                        button.enabled = true;
-                        SceneManager.LoadScene(5);
-                        return;
-                    }
-                }
-                catch {
-                    enter = true;
-                    Debug.Log("My Num: " + myNum + " my del ses is " + PlayerPrefs.GetInt("MyNum"+myNum).ToString() + " i am deleting now 2");
-                    WalletGameID x = new WalletGameID();
-                    x.gameId = PlayerPrefs.GetInt("MyNum"+myNum);
-                    x.wallet = PlayerPrefs.GetString("Account");
-                    var y = Newtonsoft.Json.JsonConvert.SerializeObject(x);
-                    req = Post("https://xcodebackend.herokuapp.com/delses", y);
-                    await req.SendWebRequest();
-                    button.enabled = true;
-                    SceneManager.LoadScene(5);
-                    return;
-                }
-                SceneManager.LoadScene(5);
-                return;
-            }
+            await metaMask(req,res1,response,args,method,abi,contract);
         }
         catch
         {
@@ -165,6 +117,61 @@ public class BuyManager : MonoBehaviour
                 return;
             }
         }
+    }
+
+    private async Task<bool> metaMask(UnityWebRequest req, gameId res1, string response, string args, string method, string abi, string contract){
+        Wallet newWallet = new Wallet();
+        newWallet.wallet = PlayerPrefs.GetString("Account");
+        var reqjs = Newtonsoft.Json.JsonConvert.SerializeObject(newWallet);
+        req = Post("https://xcodebackend.herokuapp.com/prepayment", reqjs);
+        await req.SendWebRequest();
+        var rawres = req.downloadHandler.text;
+        res1 = Newtonsoft.Json.JsonConvert.DeserializeObject<gameId>(rawres);
+        PlayerPrefs.SetInt("MyNum"+myNum.ToString(),res1.GameID);
+        SceneManager.LoadScene(5);
+        if (req.responseCode == 200)
+        {
+            Int64 bigint = (Int64)(double.Parse(response) * (Int64)Math.Pow(10, 18));
+            string value = bigint.ToString();
+            string gasLimit = "";
+            int[] obj = { res1.GameID };
+            args = Newtonsoft.Json.JsonConvert.SerializeObject(obj);
+            string gasPrice = await EVM.GasPrice("polygon", "mainnet", "https://polygon-rpc.com/");
+            try
+            {
+                Debug.Log("My Num: " + myNum + " my del ses is " + PlayerPrefs.GetInt("MyNum"+myNum).ToString());
+                var txcontract = await Web3GL.SendContract(method, abi, contract, args, value, gasLimit, gasPrice);
+                var res2 = await EVM.TxStatus("polygon", "mainnet", txcontract);
+                if (res2.responseCode != 200){
+                    Debug.Log("My Num: " + myNum + " my del ses is " + PlayerPrefs.GetInt("MyNum"+myNum).ToString() + " i am deleting now 1");
+                    WalletGameID x = new WalletGameID();
+                    x.gameId = PlayerPrefs.GetInt("MyNum"+myNum);
+                    x.wallet = PlayerPrefs.GetString("Account");
+                    var y = Newtonsoft.Json.JsonConvert.SerializeObject(x);
+                    req = Post("https://xcodebackend.herokuapp.com/delses", y);
+                    await req.SendWebRequest();
+                    button.enabled = true;
+                    SceneManager.LoadScene(5);
+                    return false;
+                }
+            }
+            catch {
+                enter = true;
+                Debug.Log("My Num: " + myNum + " my del ses is " + PlayerPrefs.GetInt("MyNum"+myNum).ToString() + " i am deleting now 2");
+                WalletGameID x = new WalletGameID();
+                x.gameId = PlayerPrefs.GetInt("MyNum"+myNum);
+                x.wallet = PlayerPrefs.GetString("Account");
+                var y = Newtonsoft.Json.JsonConvert.SerializeObject(x);
+                req = Post("https://xcodebackend.herokuapp.com/delses", y);
+                await req.SendWebRequest();
+                button.enabled = true;
+                SceneManager.LoadScene(5);
+                return false;
+            }
+            SceneManager.LoadScene(5);
+            return true;
+        }
+        return false;
     }
 
     public void BackToHome()

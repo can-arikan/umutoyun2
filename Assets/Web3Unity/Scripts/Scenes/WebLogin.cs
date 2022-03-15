@@ -31,11 +31,7 @@ public class WebLogin : MonoBehaviour
     {
         var currentWallet = ConnectAccount();
         if (PlayerPrefs.GetString("Account") != "" && PlayerPrefs.GetString("Account") != "0x0000000000000000000000000000000000000001" && currentWallet != "" && currentWallet == PlayerPrefs.GetString("Account"))
-<<<<<<< HEAD
         {
-=======
-        {
->>>>>>> 08ffa6b6b1dfe570855efe224370f176c495fd57
             Web3Connect();
             SetConnectAccount("");
             MyClass newObj = new MyClass();
