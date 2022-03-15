@@ -24,6 +24,8 @@ window.web3gl = {
   buying,
 };
 
+window.getCon = false;
+
 // will be defined after connect()
 let provider;
 let web3;
@@ -32,10 +34,14 @@ let web3Modal;
 function buying(){
   Swal.fire({
     title: 'Warning',
-    text: "While Waiting Session Buttons Active\nPlease Dont Refresh or Close App Tab",
+    text: "Until Approve or Cancel Transaction\nPlease Do Not Refresh or Close App Tab",
     icon: 'warning',
     confirmButtonColor: '#3085d6',
     confirmButtonText: 'Okey Got it!'
+  }).then((result)=>{
+    if (result.isConfirmed){
+      windows.getCon = true;
+    }
   })
 }
 

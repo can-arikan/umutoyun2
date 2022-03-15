@@ -76,25 +76,19 @@ public class BuyManager : MonoBehaviour
     public async void BuyEntry()
     {
         button.enabled = false;
-        try
-        {
-            Web3GL.buying();
-        }
-        catch
-        {
-            UnityWebRequest req = new UnityWebRequest();
-            if(enter == false) {
-                Debug.Log("My Num: " + myNum + " my del ses is " + PlayerPrefs.GetInt("MyNum"+myNum).ToString() + " i am deleting now 3");
-                WalletGameID x = new WalletGameID();
-                x.gameId = PlayerPrefs.GetInt("MyNum"+myNum);
-                x.wallet = PlayerPrefs.GetString("Account");
-                var y = Newtonsoft.Json.JsonConvert.SerializeObject(x);
-                req = Post("https://xcodebackend.herokuapp.com/delses", y);
-                await req.SendWebRequest();
-                button.enabled = true;
-                SceneManager.LoadScene(5);
-                return;
-            }
+        UnityWebRequest req = new UnityWebRequest();
+        Web3GL.buying();
+        if(enter == false) {
+            Debug.Log("My Num: " + myNum + " my del ses is " + PlayerPrefs.GetInt("MyNum"+myNum).ToString() + " i am deleting now 3");
+            WalletGameID x = new WalletGameID();
+            x.gameId = PlayerPrefs.GetInt("MyNum"+myNum);
+            x.wallet = PlayerPrefs.GetString("Account");
+            var y = Newtonsoft.Json.JsonConvert.SerializeObject(x);
+            req = Post("https://xcodebackend.herokuapp.com/delses", y);
+            await req.SendWebRequest();
+            button.enabled = true;
+            SceneManager.LoadScene(5);
+            return;
         }
     }
 
