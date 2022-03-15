@@ -3212,7 +3212,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 3.8701477
       objectReference: {fileID: 0}
-<<<<<<< HEAD
     - target: {fileID: 265906102391575949, guid: 070664da043f83b4e833ee3ae7b83cf9, type: 3}
       propertyPath: m_margin.z
       value: 9.814262
@@ -3233,8 +3232,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
-=======
->>>>>>> 08ffa6b6b1dfe570855efe224370f176c495fd57
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 070664da043f83b4e833ee3ae7b83cf9, type: 3}
 --- !u!1001 &6978600420302584708

@@ -4,35 +4,5 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/Web3Unity/Scenes/WebLogin.unity
-    guid: a1b2001e782bb47659732d7e2bcdc35f
-  - enabled: 1
-    path: Assets/Scenes/ASyncLoad.unity
-    guid: be9e81161517074438cc8572da3f1155
-  - enabled: 1
-    path: Assets/Scenes/GameScene.unity
-    guid: eecf1148907487c4c9101076c460edd9
-  - enabled: 1
-    path: Assets/Scenes/YesNtScene.unity
-    guid: 27df0d55387be7b4c8933c74d3e889a6
-  - enabled: 1
-    path: Assets/Scenes/noNtscene.unity
-    guid: 692ad8f40ad3c044b8c8177a07ab1f58
-  - enabled: 1
-    path: Assets/Scenes/yesYtScene.unity
-    guid: 156c00f8bab361b4ca4ca1066768f1aa
-  - enabled: 1
-    path: Assets/Scenes/errorScene.unity
-    guid: 9ffc940a93f47c0468751da55d11a796
-  - enabled: 1
-    path: Assets/Scenes/scoreboard.unity
-    guid: 83d4c401a9158b748ac2fedd113c87fe
-<<<<<<< HEAD
-  - enabled: 1
-    path: Assets/Scenes/Delete.unity
-    guid: dc2f2f03884854f45a9c34352bd258f8
-=======
->>>>>>> 08ffa6b6b1dfe570855efe224370f176c495fd57
+  m_Scenes: []
   m_configObjects: {}
