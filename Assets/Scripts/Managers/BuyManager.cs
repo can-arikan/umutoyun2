@@ -73,26 +73,12 @@ public class BuyManager : MonoBehaviour
     
     private bool enter = false;
 
-    public async void BuyEntry()
+    public void BuyEntry()
     {
-        button.enabled = false;
-        UnityWebRequest req = new UnityWebRequest();
         Web3GL.buying();
-        if(enter == false) {
-            Debug.Log("My Num: " + myNum + " my del ses is " + PlayerPrefs.GetInt("MyNum"+myNum).ToString() + " i am deleting now 3");
-            WalletGameID x = new WalletGameID();
-            x.gameId = PlayerPrefs.GetInt("MyNum"+myNum);
-            x.wallet = PlayerPrefs.GetString("Account");
-            var y = Newtonsoft.Json.JsonConvert.SerializeObject(x);
-            req = Post("https://xcodebackend.herokuapp.com/delses", y);
-            await req.SendWebRequest();
-            button.enabled = true;
-            SceneManager.LoadScene(5);
-            return;
-        }
     }
 
-    private async Task<bool> metaMask(){
+    public async Task<bool> metaMask(){
         button.enabled = false;
         // smart contract method to call
         string method = "payment";
@@ -147,7 +133,7 @@ public class BuyManager : MonoBehaviour
                     await req.SendWebRequest();
                     button.enabled = true;
                     SceneManager.LoadScene(5);
-                    return false;
+                    return true;
                 }
             }
             catch {
@@ -161,12 +147,12 @@ public class BuyManager : MonoBehaviour
                 await req.SendWebRequest();
                 button.enabled = true;
                 SceneManager.LoadScene(5);
-                return false;
+                return true;
             }
             SceneManager.LoadScene(5);
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
     public void BackToHome()
