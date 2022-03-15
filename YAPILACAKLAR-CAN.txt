@@ -1,0 +1,12 @@
+database 30 dakika süre tutma  wb
+
+viewlari hazirlama         (transectionlar wallet baglama ekraninda)
+
+contrat yayınlama 
+
+oyun ici kontrat denemesi
+
+sorting algorithm
+
+? 5 wallet
+
