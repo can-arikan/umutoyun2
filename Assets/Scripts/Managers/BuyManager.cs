@@ -75,7 +75,30 @@ public class BuyManager : MonoBehaviour
 
     public async void BuyEntry()
     {
-        Web3GL.buying();
+        button.enabled = false;
+        try
+        {
+            Web3GL.buying();
+        }
+        catch
+        {
+            UnityWebRequest req = new UnityWebRequest();
+            if(enter == false) {
+                Debug.Log("My Num: " + myNum + " my del ses is " + PlayerPrefs.GetInt("MyNum"+myNum).ToString() + " i am deleting now 3");
+                WalletGameID x = new WalletGameID();
+                x.gameId = PlayerPrefs.GetInt("MyNum"+myNum);
+                x.wallet = PlayerPrefs.GetString("Account");
+                var y = Newtonsoft.Json.JsonConvert.SerializeObject(x);
+                req = Post("https://xcodebackend.herokuapp.com/delses", y);
+                await req.SendWebRequest();
+                button.enabled = true;
+                SceneManager.LoadScene(5);
+                return;
+            }
+        }
+    }
+
+    private async Task<bool> metaMask(){
         button.enabled = false;
         // smart contract method to call
         string method = "payment";
@@ -94,32 +117,10 @@ public class BuyManager : MonoBehaviour
         catch
         {
             button.enabled = true;
-            return;
+            return false;
         }
         gameId res1 = new gameId();
         UnityWebRequest req = new UnityWebRequest();
-        try
-        {
-            await metaMask(req,res1,response,args,method,abi,contract);
-        }
-        catch
-        {
-            if(enter == false) {
-                Debug.Log("My Num: " + myNum + " my del ses is " + PlayerPrefs.GetInt("MyNum"+myNum).ToString() + " i am deleting now 3");
-                WalletGameID x = new WalletGameID();
-                x.gameId = PlayerPrefs.GetInt("MyNum"+myNum);
-                x.wallet = PlayerPrefs.GetString("Account");
-                var y = Newtonsoft.Json.JsonConvert.SerializeObject(x);
-                req = Post("https://xcodebackend.herokuapp.com/delses", y);
-                await req.SendWebRequest();
-                button.enabled = true;
-                SceneManager.LoadScene(5);
-                return;
-            }
-        }
-    }
-
-    private async Task<bool> metaMask(UnityWebRequest req, gameId res1, string response, string args, string method, string abi, string contract){
         Wallet newWallet = new Wallet();
         newWallet.wallet = PlayerPrefs.GetString("Account");
         var reqjs = Newtonsoft.Json.JsonConvert.SerializeObject(newWallet);
